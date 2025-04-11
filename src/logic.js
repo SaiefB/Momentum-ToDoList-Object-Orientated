@@ -1,6 +1,7 @@
 //logic.js
 
-// Task Section
+// ---------------------------- Task Section ------------------------------------
+
 // Task Class Constructor
 class Task {
     constructor(taskTitle, taskDescription, taskDueDate, taskPriority, taskProject) {
@@ -15,21 +16,28 @@ class Task {
 
 // Form Validation - checks if the form is filled out
 
-// Project Section
+// ----------------------------- Project Section -------------------------------
 
 // Project Array
-console.log("-----myProjectArray created-----");
+console.log("-----myProject array created-----");
 const myProjects = [];
 
 //Project Class Constructor
 class Project {
     constructor(projectTitle) {
         this.projectTitle = projectTitle;
-        console.log("-----Project Constructor Initiated-----");
+        console.log("-----Project constructor initiated-----");
         this.tasks = [];
         console.log(`Project Title: ${this.projectTitle}`);
         console.log(`Project Tasks: ${this.tasks}`);
     }
 }
 
-// Function to add projects to myProjects array
+// Function to add a project to myProjects array
+function addProject(projectTitle) {
+    console.log("-----addProject function initiated-----");
+    const newProject = new Project(projectTitle);
+    console.log("newProject created: ", newProject);
+    myProjects.push(newProject);
+    console.log("newProject added to myProjects array, myProjects array: ", myProjects);
+};
