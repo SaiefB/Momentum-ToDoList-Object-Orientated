@@ -16,6 +16,11 @@ class Task {
 // Form Validation - checks if the form is filled out
 
 // Project Section
+
+// Project Array
+console.log("-----myProjectArray created-----");
+const myProjects = [];
+
 //Project Class Constructor
 class Project {
     constructor(projectTitle) {
@@ -26,3 +31,5 @@ class Project {
         console.log(`Project Tasks: ${this.tasks}`);
     }
 }
+
+// Function to add projects to myProjects array
