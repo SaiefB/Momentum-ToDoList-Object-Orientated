@@ -11,8 +11,8 @@ class Task {
         this.taskDueDate = taskDueDate;
         this.taskPriority = taskPriority;
         this.taskProject = taskProject;
-    }
-}
+    };
+};
 
 // Form Validation - checks if the form is filled out
 
@@ -30,8 +30,8 @@ class Project {
         this.tasks = [];
         console.log(`Project Title: ${this.projectTitle}`);
         console.log(`Project Tasks: ${this.tasks}`);
-    }
-}
+    };
+};
 
 // Function to add a project to myProjects array
 function addProject(projectTitle) {
@@ -40,4 +40,18 @@ function addProject(projectTitle) {
     console.log("newProject created: ", newProject);
     myProjects.push(newProject);
     console.log("newProject added to myProjects array, myProjects array: ", myProjects);
+};
+
+// Project form validation - checks if the project form is filled out
+function validateProjectForm() {
+    console.log("-----validateProjectForm function initiated-----");
+    const projectTitle = projectTitleInput.value;
+    console.log("projectTitle saved: ", projectTitle);
+    if (projectTitle === "") {
+        alert("Please enter a project title.");
+        console.log("validateProjectForm check: false");
+        return false;
+    };
+    console.log("validateProjectForm check: true");
+    return true;
 };
