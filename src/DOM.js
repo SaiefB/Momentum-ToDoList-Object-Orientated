@@ -34,6 +34,8 @@ const projectList = document.querySelector(".projectList");
 function openProjectModal() {
     projectAddBtn.onclick = function () {
         console.log("-----openProjectModal function initiated-----");
-        
-    }
-}
+
+    };
+};
+
+export {openProjectModal};

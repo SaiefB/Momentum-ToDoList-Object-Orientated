@@ -3,8 +3,9 @@
 import "./styles.css";
 
 
-import {} from "./DOM";
+import {openProjectModal} from "./DOM";
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM fully loaded and parsed");
+    openProjectModal();
 });
