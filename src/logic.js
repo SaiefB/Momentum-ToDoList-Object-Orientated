@@ -55,3 +55,5 @@ function validateProjectForm() {
     console.log("validateProjectForm check: true");
     return true;
 };
+
+export { Task, myProjects, addProject, validateProjectForm}
