@@ -65,7 +65,7 @@ function submitProject() {
         if (validateProjectForm(project)) {
             addProject(project);
             clearProjectForm();
-            /* displayProjectAside(); */
+            displayProjectAside();
         };
     };
 };
@@ -77,13 +77,29 @@ function clearProjectForm() {
     console.log("project form cleared");
 };
 
-/* //Function to display projects in the aside
+//Function to display projects in the aside
 function displayProjectAside() {
     console.log("-----displayProjectAside function initiated-----");
     projectList.innerHTML = "";
     console.log("projectList innerHTML cleared");
 
+    myProjects.forEach((project, index) => {
+        const projectAsideEntry = `
+            <button class="projectBtn projectItem" data-index="${index}">
+                <div class="projectItemLeftDiv">
+                    <i class="fa-solid fa-box-archive"></i>
+                    ${project.projectTitle}
+                </div>
+                <div class="projectItemRightDiv">
+                    <p class="projectDelete">
+                        <i class="fa-solid fa-trash" data-index="${index}"></i>
+                    </p>
+                </div>
+            </button>
+        `;
+        projectList.innerHTML += projectAsideEntry;
+        console.log("projectEntry added to projectList");
+    });
+};
 
-} */
-
-export {openProjectModal, closeProjectModal, submitProject, clearProjectForm};
+export {openProjectModal, closeProjectModal, submitProject, clearProjectForm, displayProjectAside};
