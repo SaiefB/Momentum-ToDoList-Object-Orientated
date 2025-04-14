@@ -64,10 +64,26 @@ function submitProject() {
 
         if (validateProjectForm(project)) {
             addProject(project);
-            /*clearProjectForm();*/
+            clearProjectForm();
             /* displayProjectAside(); */
         };
     };
 };
 
-export {openProjectModal, closeProjectModal, submitProject};
+// Function to clear project form
+function clearProjectForm() {
+    console.log("-----clearProjectForm function initiated-----");
+    projectTitleInput.value = "";
+    console.log("project form cleared");
+};
+
+/* //Function to display projects in the aside
+function displayProjectAside() {
+    console.log("-----displayProjectAside function initiated-----");
+    projectList.innerHTML = "";
+    console.log("projectList innerHTML cleared");
+
+
+} */
+
+export {openProjectModal, closeProjectModal, submitProject, clearProjectForm};
