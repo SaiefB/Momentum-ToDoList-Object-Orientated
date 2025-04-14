@@ -27,7 +27,7 @@ const projectAddBtn = document.querySelector(".projectAddBtn");
 const projectAddModal = document.querySelector(".projectFormSection");
 const cancelNewProjectBtn = document.querySelector(".projectCancelBtn");
 const projectSubmitBtn = document.querySelector(".projectSubmit");
-const projectTitleInput = document.querySelector(".projectTitleInput")
+const projectTitleInput = document.querySelector(".projectTitleInput");
 const projectList = document.querySelector(".projectList");
 
 // Function to open project modal
@@ -51,6 +51,22 @@ function closeProjectModal() {
         projectAddModal.style.display = "none";
         console.log("projectAddBtn displayed");
         console.log("projectModal hidden");
+    };
+};
+
+// Function to submit project
+function submitProject() {
+    projectSubmitBtn.onclick = function(event) {
+        console.log("-----submitProject function initiated-----");
+        console.log("submitProject clicked");
+        event.preventDefault();
+        const project = projectTitleInput.value;
+
+        if (validateProjectForm(project)) {
+            addProject(project);
+            /*clearProjectForm();*/
+            /* displayProjectAside(); */
+        };
     };
 };
 
