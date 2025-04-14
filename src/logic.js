@@ -66,4 +66,6 @@ function removeFromProjectArray() {
     console.log("project removed from myProjects array: ", myProjects);
 };
 
+
+
 export { Task, myProjects, addProject, validateProjectForm, removeFromProjectArray}
