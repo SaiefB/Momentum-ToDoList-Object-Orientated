@@ -35,7 +35,7 @@ function openProjectModal() {
     projectAddBtn.onclick = function () {
         console.log("-----openProjectModal function initiated-----");
         console.log("projectAddBtn clicked");
-        projectAddBtn.computedStyleMap.display = "none";
+        projectAddBtn.style.display = "none";
         projectAddModal.style.display = "flex";
         console.log("projectAddBtn hidden");
         console.log("projectAddModal displayed");
