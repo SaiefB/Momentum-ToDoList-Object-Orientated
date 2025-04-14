@@ -70,4 +70,4 @@ function submitProject() {
     };
 };
 
-export {openProjectModal, closeProjectModal};
+export {openProjectModal, closeProjectModal, submitProject};

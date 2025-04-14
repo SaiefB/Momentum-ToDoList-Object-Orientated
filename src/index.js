@@ -3,10 +3,11 @@
 import "./styles.css";
 
 
-import {openProjectModal, closeProjectModal} from "./DOM";
+import {openProjectModal, closeProjectModal, submitProject} from "./DOM";
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM fully loaded and parsed");
     openProjectModal();
     closeProjectModal();
+    submitProject();
 });
