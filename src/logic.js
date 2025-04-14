@@ -56,4 +56,14 @@ function validateProjectForm() {
     return true;
 };
 
-export { Task, myProjects, addProject, validateProjectForm}
+//function to remove projects from myProject array
+function removeFromProjectArray() {
+    console.log("-----removeFromProjectArray function initiated-----");
+    console.log("current myProjects array: ", myProjects);
+    const projectIndex = parseInt(event.target.getAttribute("data-index"), 10);
+    console.log("projectIndex: ", projectIndex);
+    myProjects.splice(projectIndex, 1);  // remove project from myProjects array
+    console.log("project removed from myProjects array: ", myProjects);
+};
+
+export { Task, myProjects, addProject, validateProjectForm, removeFromProjectArray}

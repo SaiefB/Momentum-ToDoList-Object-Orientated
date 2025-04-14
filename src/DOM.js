@@ -1,7 +1,7 @@
 // DOM.js
 
 //Import
-import {Task, myProjects, addProject, validateProjectForm } from "./logic";
+import {Task, myProjects, addProject, validateProjectForm, removeFromProjectArray} from "./logic";
 
 // ---------------------------- Collect DOM Elements --------------------------
 const addBtn = document.querySelector(".contentAddButton");
@@ -102,4 +102,17 @@ function displayProjectAside() {
     });
 };
 
-export {openProjectModal, closeProjectModal, submitProject, clearProjectForm, displayProjectAside};
+// function to delete projects
+function deleteProject() {
+    projectList.addEventListener("click", (event) => {
+        // check if delete icon is clicked
+        if (event.target.classList.contains("fa-trash")) {
+            console.log("-----deleteProject function initiated-----");
+            console.log("delete icon clicked");
+            removeFromProjectArray();
+            displayProjectAside(); // update projectList
+        }
+    })
+}
+
+export {openProjectModal, closeProjectModal, submitProject, clearProjectForm, deleteProject};
