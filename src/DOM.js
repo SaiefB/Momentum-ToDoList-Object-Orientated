@@ -42,4 +42,16 @@ function openProjectModal() {
     };
 };
 
-export {openProjectModal};
+// Function to close project modal
+function closeProjectModal() {
+    cancelNewProjectBtn.onclick = function() {
+        console.log("-----closeProjectModal function initiated-----");
+        console.log("projectCancelBtn clicked");
+        projectAddBtn.style.display = "block";
+        projectAddModal.style.display = "none";
+        console.log("projectAddBtn displayed");
+        console.log("projectModal hidden");
+    };
+};
+
+export {openProjectModal, closeProjectModal};
