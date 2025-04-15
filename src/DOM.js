@@ -30,6 +30,8 @@ const projectSubmitBtn = document.querySelector(".projectSubmit");
 const projectTitleInput = document.querySelector(".projectTitleInput");
 const projectList = document.querySelector(".projectList");
 
+const contentTitle = document.querySelector(".contentTitle");
+
 // Function to open project modal
 function openProjectModal() {
     projectAddBtn.onclick = function () {
@@ -111,8 +113,25 @@ function deleteProject() {
             console.log("delete icon clicked");
             removeFromProjectArray();
             displayProjectAside(); // update projectList
-        }
-    })
-}
+        };
+    });
+};
 
-export {openProjectModal, closeProjectModal, submitProject, clearProjectForm, deleteProject};
+// function to get project index
+function getProjectIndex() {
+    projectList.addEventListener("click", (event) => {
+        console.log("-----getProjectIndex function initiated-----");
+        console.log("projectItem clicked");
+
+        const projectBtn = event.target.closest(".projectBtn"); // Find the closest projectBtn
+        if (!projectBtn) return; // If no projectBtn is found, return.
+
+        const projectIndex = parseInt(projectBtn.getAttribute("data-index"), 10); // Get the projectIndex
+        console.log("projectIndex: ", projectIndex);
+        /* if (!isNaN(projectIndex)) { // if projectIndex is a number then...
+            displayProject(projectIndex); // Display tasks for selected project
+        }; */
+    });
+};
+
+export {openProjectModal, closeProjectModal, submitProject, clearProjectForm, deleteProject, getProjectIndex};
