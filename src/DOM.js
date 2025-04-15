@@ -128,10 +128,35 @@ function getProjectIndex() {
 
         const projectIndex = parseInt(projectBtn.getAttribute("data-index"), 10); // Get the projectIndex
         console.log("projectIndex: ", projectIndex);
-        /* if (!isNaN(projectIndex)) { // if projectIndex is a number then...
-            displayProject(projectIndex); // Display tasks for selected project
-        }; */
+        if (!isNaN(projectIndex)) { // if projectIndex is a number then...
+            displayProjects(projectIndex); // Display tasks for selected project
+        };
     });
+};
+
+// Function to display project
+function displayProjects(projectIndex) {
+    console.log("-----displayProjects function initiated-----");
+    console.log("projectIndex: ", projectIndex);
+    contentSection.innerHTML = "";
+    console.log("contentSection innerHTML cleared");
+
+    if (projectIndex >= 0 && projectIndex < myProjects.length) {
+        const project = myProjects[projectIndex];
+
+        const projectEntry = `
+        <div class="projectContainer">
+            <h1>${project.projectTitle}</h1>
+            <div class="taskItemContainer"><div>
+            <button class="contentAddButton">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </div>
+        `;
+
+        contentSection.innerHTML += projectEntry; // display project
+        console.log("projectEntry added to contentSection");
+    };
 };
 
 export {openProjectModal, closeProjectModal, submitProject, clearProjectForm, deleteProject, getProjectIndex};

@@ -14,7 +14,29 @@ class Task {
     };
 };
 
-// Form Validation - checks if the form is filled out
+/* // Form Validation - checks if the form is filled out
+function validateTaskForm(task, description, date, priority, project) {
+    console.log("-----validateTaskForm function initiated-----");
+    if (task === "" || description === "" || date === "" || priority === "" || project === "") {
+        alert("Please fill out all fields");
+        console.log("validateTaskForm check: false");
+        return false;
+    };
+    console.log("validateTaskForm check: true");
+    return true;
+}; */
+
+// function to add tasks to project
+function addTask(taskTitle, taskDescription, taskDueDate, taskPriority, taskProject) {
+    console.log("-----addTask function initiated-----");
+    const newTask = new Task(taskTitle, taskDescription, taskDueDate, taskPriority, taskProject);
+    console.log("newTask created: ", newTask);
+    myTasks.push(newTask);
+    console.log("newTask added to myTasks array: ", myTasks);
+}
+
+
+// function to add a task to the inbox array
 
 // ----------------------------- Project Section -------------------------------
 
