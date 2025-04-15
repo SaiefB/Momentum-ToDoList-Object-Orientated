@@ -2,6 +2,8 @@
 
 // ---------------------------- Task Section ------------------------------------
 
+// Inbox object
+
 // Task Class Constructor
 class Task {
     constructor(taskTitle, taskDescription, taskDueDate, taskPriority, taskProject) {
@@ -14,7 +16,7 @@ class Task {
     };
 };
 
-/* // Form Validation - checks if the form is filled out
+// Form Validation - checks if the form is filled out
 function validateTaskForm(task, description, date, priority, project) {
     console.log("-----validateTaskForm function initiated-----");
     if (task === "" || description === "" || date === "" || priority === "" || project === "") {
@@ -24,7 +26,7 @@ function validateTaskForm(task, description, date, priority, project) {
     };
     console.log("validateTaskForm check: true");
     return true;
-}; */
+};
 
 // function to add tasks to project
 function addTask(taskTitle, taskDescription, taskDueDate, taskPriority, taskProject) {
