@@ -7,7 +7,7 @@
 // Task Class Constructor
 class Task {
     constructor(taskTitle, taskDescription, taskDueDate, taskPriority, taskProject) {
-        console.log("-----Task Constructor Initiated")
+        console.log("-----Task Constructor Initiated-----");
         this.taskTitle = taskTitle;
         this.taskDescription = taskDescription;
         this.taskDueDate = taskDueDate;
