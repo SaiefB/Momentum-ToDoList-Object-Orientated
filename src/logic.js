@@ -107,4 +107,4 @@ function removeFromProjectArray() {
 
 
 
-export { Task, myProjects, addProject, validateProjectForm, removeFromProjectArray}
+export { Task, validateTaskForm, myProjects, addProject, validateProjectForm, removeFromProjectArray}

@@ -1,7 +1,7 @@
 // DOM.js
 
 //Import
-import {Task, myProjects, addProject, validateProjectForm, removeFromProjectArray} from "./logic";
+import {Task, validateTaskForm, myProjects, addProject, validateProjectForm, removeFromProjectArray} from "./logic";
 
 // ---------------------------- Collect DOM Elements --------------------------
 const addBtn = document.querySelector(".contentAddButton");
@@ -52,6 +52,30 @@ function cancelTaskModal() {
         modal.style.display = "none";
         overlay.style.display = "none";
         console.log("taskModal and overlay hidden");
+    };
+};
+
+// function to submit taskForm
+function submitTask() {
+    submitBtn.onclick = function (event) {
+        console.log("-----submitTask function called-----");
+        console.log("submitBtn clicked");
+        modal.style.display = "none";
+        overlay.style.display = "none";
+        console.log("taskModal and overlay hidden");
+        event.preventDefault();
+        const task = taskInput.value;
+        const description = descriptionInput.value;
+        const date = dateInput.value;
+        const priority = priorityInput.value;
+        const project = projectInput.value;
+        console.log("Project selected: ", project);
+
+        if (validateTaskForm(task, description, date, priority, project)) {
+            addTask(task, description, date, priority, project);
+            /* clearTaskForm(); */
+            /* displayTasks(); */
+        };
     };
 };
 
@@ -194,4 +218,4 @@ function displayProjects(projectIndex) {
     };
 };
 
-export {openTaskModal, closeTaskModal, cancelTaskModal, openProjectModal, closeProjectModal, submitProject, clearProjectForm, deleteProject, getProjectIndex};
+export {openTaskModal, closeTaskModal, cancelTaskModal, submitTask, openProjectModal, closeProjectModal, submitProject, clearProjectForm, deleteProject, getProjectIndex};
