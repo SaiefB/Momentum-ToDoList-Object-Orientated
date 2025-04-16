@@ -45,6 +45,15 @@ function closeTaskModal() {
 };
 
 // modal cancel function
+function cancelTaskModal() {
+    modalCancel.onclick = function () {
+        console.log("-----cancelTaskModal function called-----");
+        console.log("task cancel button clicked");
+        modal.style.display = "none";
+        overlay.style.display = "none";
+        console.log("taskModal and overlay hidden");
+    };
+};
 
 // ---------------------------- Project Section ------------------------------
 
@@ -185,4 +194,4 @@ function displayProjects(projectIndex) {
     };
 };
 
-export {openTaskModal, closeTaskModal, openProjectModal, closeProjectModal, submitProject, clearProjectForm, deleteProject, getProjectIndex};
+export {openTaskModal, closeTaskModal, cancelTaskModal, openProjectModal, closeProjectModal, submitProject, clearProjectForm, deleteProject, getProjectIndex};
