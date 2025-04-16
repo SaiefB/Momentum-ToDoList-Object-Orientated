@@ -23,6 +23,15 @@ const taskItemContainer = document.querySelector(".taskItemContainer");
 // ---------------------------- Task Section ------------------------------------
 
 // Modal open function
+function openTaskModal() {
+    addBtn.onclick = function () {
+        console.log("-----openTaskModal function called-----");
+        console.log("addTaskButton clicked");
+        modal.style.display = "block";
+        overlay.style.display = "block";
+        console.log("taskModal and overlay displayed");
+    };
+}
 
 // ---------------------------- Project Section ------------------------------
 
@@ -163,4 +172,4 @@ function displayProjects(projectIndex) {
     };
 };
 
-export {openProjectModal, closeProjectModal, submitProject, clearProjectForm, deleteProject, getProjectIndex};
+export {openTaskModal, openProjectModal, closeProjectModal, submitProject, clearProjectForm, deleteProject, getProjectIndex};
