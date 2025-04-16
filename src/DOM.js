@@ -31,6 +31,17 @@ function openTaskModal() {
         overlay.style.display = "block";
         console.log("taskModal and overlay displayed");
     };
+};
+
+// Modal close function
+function closeTaskModal() {
+    closeBtn.onclick = function () {
+        console.log("-----closeTaskModal function called-----");
+        console.log("closeBtn clicked");
+        modal.style.display = "none";
+        overlay.style.display = "none";
+        console.log("taskModal and overlay hidden");
+    }
 }
 
 // ---------------------------- Project Section ------------------------------
@@ -172,4 +183,4 @@ function displayProjects(projectIndex) {
     };
 };
 
-export {openTaskModal, openProjectModal, closeProjectModal, submitProject, clearProjectForm, deleteProject, getProjectIndex};
+export {openTaskModal, closeTaskModal, openProjectModal, closeProjectModal, submitProject, clearProjectForm, deleteProject, getProjectIndex};
