@@ -41,8 +41,10 @@ function closeTaskModal() {
         modal.style.display = "none";
         overlay.style.display = "none";
         console.log("taskModal and overlay hidden");
-    }
-}
+    };
+};
+
+// modal cancel function
 
 // ---------------------------- Project Section ------------------------------
 
