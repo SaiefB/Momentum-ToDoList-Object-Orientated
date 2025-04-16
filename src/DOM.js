@@ -1,7 +1,7 @@
 // DOM.js
 
 //Import
-import {Task, validateTaskForm, myProjects, addProject, validateProjectForm, removeFromProjectArray} from "./logic";
+import {Task, addTask, validateTaskForm, myProjects, addProject, validateProjectForm, removeFromProjectArray} from "./logic";
 
 // ---------------------------- Collect DOM Elements --------------------------
 const addBtn = document.querySelector(".contentAddButton");
@@ -73,10 +73,21 @@ function submitTask() {
 
         if (validateTaskForm(task, description, date, priority, project)) {
             addTask(task, description, date, priority, project);
-            /* clearTaskForm(); */
+            clearTaskForm();
             /* displayTasks(); */
         };
     };
+};
+
+// function to clear task form
+function clearTaskForm() {
+    console.log("-----clearTaskForm function called-----");
+    taskInput.value = "";
+    descriptionInput.value = "";
+    dateInput.value = "";
+    priorityInput.value = "";
+    projectInput.value = "";
+    console.log("task form cleared");
 };
 
 // ---------------------------- Project Section ------------------------------

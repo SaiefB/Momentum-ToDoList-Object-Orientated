@@ -38,7 +38,7 @@ function addTask(taskTitle, taskDescription, taskDueDate, taskPriority, taskProj
     // find the correct project
     const projectIndex = myProjects.findIndex(project => project.projectTitle === taskProject);
     console.log("projectIndex: ", projectIndex);
-    if (projectIndex) {
+    if (projectIndex !== -1 && myProjects.length > 0) {
         myProjects[projectIndex].tasks.push(newTask);
         console.log("newTask added to project: ", myProjects[projectIndex]);
     };
@@ -107,4 +107,4 @@ function removeFromProjectArray() {
 
 
 
-export { Task, validateTaskForm, myProjects, addProject, validateProjectForm, removeFromProjectArray}
+export { Task, addTask, validateTaskForm, myProjects, addProject, validateProjectForm, removeFromProjectArray}
