@@ -2,7 +2,7 @@
 
 // ---------------------------- Task Section ------------------------------------
 
-// Inbox object
+// Inbox object - to hold all tasks
 const inbox = {};
 
 // Task Class Constructor
@@ -34,9 +34,23 @@ function addTask(taskTitle, taskDescription, taskDueDate, taskPriority, taskProj
     console.log("-----addTask function initiated-----");
     const newTask = new Task(taskTitle, taskDescription, taskDueDate, taskPriority, taskProject);
     console.log("newTask created: ", newTask);
+
+    // find the correct project
+    const projectIndex = myProjects.findIndex(project => project.projectTitle === taskProject);
+    console.log("projectIndex: ", projectIndex);
+    if (projectIndex) {
+        myProjects[projectIndex].tasks.push(newTask);
+        console.log("newTask added to project: ", myProjects[projectIndex]);
+    };
+};
+
+/* function addTask(taskTitle, taskDescription, taskDueDate, taskPriority, taskProject) {
+    console.log("-----addTask function initiated-----");
+    const newTask = new Task(taskTitle, taskDescription, taskDueDate, taskPriority, taskProject);
+    console.log("newTask created: ", newTask);
     myTasks.push(newTask);
     console.log("newTask added to myTasks array: ", myTasks);
-}
+} */
 
 
 // function to add a task to the inbox array

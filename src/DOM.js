@@ -20,6 +20,10 @@ const projectInput = document.getElementById("projectDropDown");
 const contentSection = document.querySelector(".content")
 const taskItemContainer = document.querySelector(".taskItemContainer");
 
+// ---------------------------- Task Section ------------------------------------
+
+// Modal open function
+
 // ---------------------------- Project Section ------------------------------
 
 // Collect Project DOM section
