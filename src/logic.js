@@ -3,6 +3,7 @@
 // ---------------------------- Task Section ------------------------------------
 
 // Inbox object
+const inbox = {};
 
 // Task Class Constructor
 class Task {
