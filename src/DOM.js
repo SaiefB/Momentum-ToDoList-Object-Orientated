@@ -90,6 +90,8 @@ function clearTaskForm() {
     console.log("task form cleared");
 };
 
+
+
 // ---------------------------- Project Section ------------------------------
 
 // Collect Project DOM section
