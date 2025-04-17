@@ -11,7 +11,7 @@ class Project {
         this.projectTitle = projectTitle;
         console.log("-----Project constructor called-----");
 
-        this.tasks = [];
+        this.tasks = ["task1", "task2", "task3"]; // Example tasks
         console.log(`Project Title: ${this.projectTitle}`);
         console.log(`Project Tasks: ${this.tasks}`);
     };

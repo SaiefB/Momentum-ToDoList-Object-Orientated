@@ -15,6 +15,7 @@ const projectTitleInput = document.querySelector(".projectTitleInput");
 const projectList = document.querySelector(".projectList");
 
 const contentTitle = document.querySelector(".contentTitle");
+const contentTaskContainer = document.querySelector(".taskItemContainer");
 
 // Function to open project modal
 function openProjectModal() {
@@ -94,4 +95,65 @@ function deleteProjectFromAside() {
     });
 };
 
-export {openProjectModal, closeProjectModal, submitProjectForm, deleteProjectFromAside};
+// handler for project list item click
+function projectListClickHandler() {
+    projectList.addEventListener("click", (event) => {
+    console.log("-----projectList click event handler called-----");
+    displayProjectTitle(event);
+    displayProjectTasks(event);
+    });
+};
+
+// Function to extract Project Index and return it
+function getProjectIndex(event) {
+    console.log("-----getProjectIndex function called-----");
+    const projectBtn = event.target.closest(".projectBtn");
+    if (!projectBtn) return NaN;
+
+    const projectIndex = parseInt(projectBtn.getAttribute("data-index"), 10);
+    console.log("projectIndex: ", projectIndex);
+    return projectIndex;
+};
+
+// Function to display project title in content section
+function displayProjectTitle(event) {
+    console.log("-----displayProjectTitle function called-----");
+    const projectIndex = getProjectIndex(event);
+    // get project title from myProjects array
+    const projectTitle = myProjects[projectIndex].projectTitle;
+    // contentTitle inner html to change to project title
+    contentTitle.innerHTML = projectTitle;
+};
+
+// Function to display project task array
+function displayProjectTasks(event) {
+    console.log("-----displayProjectTasks function called-----");
+    const projectIndex = getProjectIndex(event);
+    // get project task from myProjects array
+    const projectTasks = myProjects[projectIndex].tasks;
+    // contentTaskContainer inner html to change to project tasks
+
+    // clear previous tasks
+    contentTaskContainer.innerHTML = "";
+
+    // check if there are tasks
+    if (projectTasks.length === 0) {
+        contentTaskContainer.innerHTML = "<p>No tasks available</p>";
+        return;
+    };
+
+    // loop to display each task
+    projectTasks.forEach((task, index) => {
+        const taskItem = document.createElement("div");
+        taskItem.classList.add("taskItem");
+        taskItem.textContent = `${index + 1}. ${task}`;
+        contentTaskContainer.appendChild(taskItem);
+    });
+
+    console.log("Project tasks displayed: ", projectTasks);
+
+
+
+}
+
+export {openProjectModal, closeProjectModal, submitProjectForm, deleteProjectFromAside, projectListClickHandler};

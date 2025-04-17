@@ -3,7 +3,7 @@
 
 import "./styles.css";
 
-import {openProjectModal, closeProjectModal, submitProjectForm, deleteProjectFromAside} from "./modules/DOM";
+import {openProjectModal, closeProjectModal, submitProjectForm, deleteProjectFromAside, projectListClickHandler} from "./modules/DOM";
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM fully loaded and parsed");
@@ -11,4 +11,5 @@ document.addEventListener("DOMContentLoaded", () => {
     closeProjectModal();
     submitProjectForm();
     deleteProjectFromAside();
+    projectListClickHandler();
 });
