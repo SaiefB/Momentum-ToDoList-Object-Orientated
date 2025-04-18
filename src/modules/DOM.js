@@ -1,9 +1,110 @@
 // DOM.js
 // Handles DOM manipulation
 
+import {Task} from "./task";
 import {myProjects} from "./project";
 import {addProjectToArray, deleteProjectFromArray} from "./projectController";
-import {displayProjectAside} from "./render";
+import {displayProjectAside, displayProjectTitle, displayProjectTasks} from "./render";
+
+// ---------------------------- Task Modal Section ------------------------------
+// Collect Task DOM section
+const addBtn = document.querySelector(".contentAddButton");
+const modal = document.querySelector(".formSection");
+const overlay =document.querySelector(".overlay");
+const closeBtn = document.querySelector(".modalClose");
+const modalCancel = document.querySelector(".cancelBtn");
+const submitBtn = document.querySelector(".submit");
+
+const taskInput = document.querySelector(".task");
+const descriptionInput = document.querySelector(".description");
+const dateInput = document.querySelector(".date");
+const priorityInput = document.querySelector(".priority");
+const projectInput = document.getElementById("projectDropDown");
+
+// Function to open task modal
+function openTaskModal() {
+    addBtn.onclick = function () {
+        console.log("-----OpenTaskModal function called-----");
+        console.log("addBtn clicked");
+        modal.style.display = "block";
+        overlay.style.display = "block";
+        console.log("modal and overlay displayed");
+    };
+};
+
+// Function to close task modal
+function closeTaskModal() {
+    closeBtn.onclick = function () {
+        console.log("-----closeTaskModal function called-----");
+        console.log("closeBtn clicked");
+        modal.style.display = "none";
+        overlay.style.display = "none";
+        console.log("modal and overlay hidden");
+    };
+};
+
+//Function to close task modal on cancel button click
+function closeTaskModalOnCancel() {
+    modalCancel.onclick = function () {
+        event.preventDefault();
+        console.log("-----closeTaskModalOnCancel function called-----");
+        console.log("modalCancel clicked");
+        modal.style.display = "none";
+        overlay.style.display = "none";
+        console.log("modal and overlay hidden");
+    };
+};
+
+// Function to handle task submission button click
+function submitTaskForm() {
+    submitBtn.onclick - function (event) {
+        console.log("-----submitTaskForm function called-----");
+        console.log("submitBtn clicked");
+        modal.style.display = "none";
+        overlay.style.display = "none";
+        console.log("modal and overlay hidden");
+        event.preventDefault();
+        const taskTitle = taskInput.value;
+        const taskDescription = descriptionInput.value;
+        const dueDate = dateInput.value;
+        const priority = priorityInput.value;
+        const project = projectInput.value;
+        console.log("Project selected: ", project);
+
+        if (validateTaskForm(taskTitle, taskDescription, dueDate, priority, project)) {
+            /* addTaskToProject(project, taskTitle, taskDescription, dueDate, priority); */
+            clearTaskForm();
+            /* displayProjectTitle */
+            /* displayProjectTasks */
+        };
+    };
+};
+
+// Function to validate task form
+function validateTaskForm(taskTitle, taskDescription, dueDate,priority, project) {
+    console.log("-----validateTaskForm function called-----");
+    if (taskTitle === "" || taskDescription === "" || dueDate === "" || priority === "" || project === "") {
+        alert("Please fill in all fields");
+        console.log("validateTaskForm check: false");
+        return false;
+    };
+    console.log("validateTaskForm check: true");
+    return true;
+};
+
+// Function to clear task form
+function clearTaskForm() {
+    console.log("-----clearTaskForm function called-----");
+    taskInput.value = "";
+    descriptionInput.value = "";
+    dateInput.value = "";
+    priorityInput.value = "";
+    projectInput.value = "";
+    projectInput.selectedIndex = 0;
+    console.log("task form cleared");
+};
+
+
 
 // ---------------------------- Project Modal Section ------------------------------
 // Collect Project DOM section
@@ -13,9 +114,6 @@ const cancelNewProjectBtn = document.querySelector(".projectCancelBtn");
 const projectSubmitBtn = document.querySelector(".projectSubmit");
 const projectTitleInput = document.querySelector(".projectTitleInput");
 const projectList = document.querySelector(".projectList");
-
-const contentTitle = document.querySelector(".contentTitle");
-const contentTaskContainer = document.querySelector(".taskItemContainer");
 
 // Function to open project modal
 function openProjectModal() {
@@ -98,9 +196,12 @@ function deleteProjectFromAside() {
 // handler for project list item click
 function projectListClickHandler() {
     projectList.addEventListener("click", (event) => {
-    console.log("-----projectList click event handler called-----");
-    displayProjectTitle(event);
-    displayProjectTasks(event);
+        console.log("-----projectList click event handler called-----");
+        const projectIndex = getProjectIndex(event);
+            if (!isNaN(projectIndex)) {
+                displayProjectTitle(projectIndex);
+                displayProjectTasks(myProjects[projectIndex].tasks);
+            }
     });
 };
 
@@ -115,45 +216,8 @@ function getProjectIndex(event) {
     return projectIndex;
 };
 
-// Function to display project title in content section
-function displayProjectTitle(event) {
-    console.log("-----displayProjectTitle function called-----");
-    const projectIndex = getProjectIndex(event);
-    // get project title from myProjects array
-    const projectTitle = myProjects[projectIndex].projectTitle;
-    // contentTitle inner html to change to project title
-    contentTitle.innerHTML = projectTitle;
-};
-
-// Function to display project task array
-function displayProjectTasks(event) {
-    console.log("-----displayProjectTasks function called-----");
-    const projectIndex = getProjectIndex(event);
-    // get project task from myProjects array
-    const projectTasks = myProjects[projectIndex].tasks;
-    // contentTaskContainer inner html to change to project tasks
-
-    // clear previous tasks
-    contentTaskContainer.innerHTML = "";
-
-    // check if there are tasks
-    if (projectTasks.length === 0) {
-        contentTaskContainer.innerHTML = "<p>No tasks available</p>";
-        return;
-    };
-
-    // loop to display each task
-    projectTasks.forEach((task, index) => {
-        const taskItem = document.createElement("div");
-        taskItem.classList.add("taskItem");
-        taskItem.textContent = `${index + 1}. ${task}`;
-        contentTaskContainer.appendChild(taskItem);
-    });
-
-    console.log("Project tasks displayed: ", projectTasks);
 
 
 
-}
 
-export {openProjectModal, closeProjectModal, submitProjectForm, deleteProjectFromAside, projectListClickHandler};
+export {openTaskModal, closeTaskModal, closeTaskModalOnCancel, submitTaskForm, openProjectModal, closeProjectModal, submitProjectForm, deleteProjectFromAside, projectListClickHandler};

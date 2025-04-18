@@ -1,6 +1,10 @@
 // project.js
 // Project class or project-related functions
 
+//All Tasks array held in Inbox
+console.log("-----Inbox array initialised-----");
+const Inbox = [];
+
 // Project Array
 console.log("-----myProject array initialised-----");
 const myProjects = [];
@@ -17,4 +21,4 @@ class Project {
     };
 };
 
-export {myProjects, Project};
+export {Inbox, myProjects, Project};

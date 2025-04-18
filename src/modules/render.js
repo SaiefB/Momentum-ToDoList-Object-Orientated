@@ -7,6 +7,9 @@ import { myProjects } from "./project";
 // Collect Project DOM section
 const projectList = document.querySelector(".projectList");
 
+const contentTitle = document.querySelector(".contentTitle");
+const contentTaskContainer = document.querySelector(".taskItemContainer");
+
 // ---------------------------- Project Aside Section ------------------------------
 
 // Function to display project to aside
@@ -34,4 +37,38 @@ function displayProjectAside() {
     });
 };
 
-export { displayProjectAside };
+// ---------------------------- Content Section ------------------------------
+
+// Function to display project title in content section
+function displayProjectTitle(projectIndex) {
+    console.log("-----displayProjectTitle function called-----");
+    // get project title from myProjects array
+    const projectTitle = myProjects[projectIndex].projectTitle;
+    // contentTitle inner html to change to project title
+    contentTitle.innerHTML = projectTitle;
+};
+
+// Function to display project task array
+function displayProjectTasks(tasks) {
+    console.log("-----displayProjectTasks function called-----");
+    // clear previous tasks
+    contentTaskContainer.innerHTML = "";
+
+    // check if there are tasks
+    if (tasks.length === 0) {
+        contentTaskContainer.innerHTML = "<p>Add a Task</p>";
+        return;
+    };
+
+    // loop to display each task
+    tasks.forEach((task, index) => {
+        const taskItem = document.createElement("div");
+        taskItem.classList.add("contentButton");
+        taskItem.textContent = `${task}`;
+        contentTaskContainer.appendChild(taskItem);
+    });
+
+    console.log("Project tasks displayed");
+}
+
+export {displayProjectAside, displayProjectTitle, displayProjectTasks};
