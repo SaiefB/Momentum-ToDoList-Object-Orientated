@@ -13,8 +13,6 @@ function addTaskToProject(task, description, dueDate, priority, selectedProjectT
     console.log("myProjects array: ", myProjects);
     console.log("Selected project title: ", selectedProjectTitle);
 
-
-
     //Loop through projects in myProjects and find the selected project and get index
     myProjects.forEach((project, index) => {
         console.log("Project title check: ", project.projectTitle);
@@ -30,9 +28,19 @@ function addTaskToProject(task, description, dueDate, priority, selectedProjectT
 };
 
 
+// TODO: figure this out
+// function to delete task from project
+function deleteTaskFromProject(event) {
+    console.log("-----deleteTaskFromProject function called-----");
+    // get project of the task the user clicked on
+    const getProjectIndex = event.target.closest(".contentButton").dataset.index;
+    console.log("getProjectIndex: ", getProjectIndex);
+    //get task that the user clicked on
+    // remove task from project
+};
 
 
 
 // delete task from project
 
-export {addTaskToProject};
+export {addTaskToProject, deleteTaskFromProject};

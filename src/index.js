@@ -3,7 +3,7 @@
 
 import "./styles.css";
 
-import {openTaskModal, closeTaskModal, closeTaskModalOnCancel, submitTaskForm, openProjectModal, closeProjectModal, submitProjectForm, deleteProjectFromAside, projectListClickHandler} from "./modules/DOM";
+import {openTaskModal, closeTaskModal, closeTaskModalOnCancel, submitTaskForm, deleteTaskHandler, openProjectModal, closeProjectModal, submitProjectForm, deleteProjectFromAside, projectListClickHandler} from "./modules/DOM";
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM fully loaded and parsed");
@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     closeTaskModal();
     closeTaskModalOnCancel();
     submitTaskForm();
+    deleteTaskHandler();
 
     openProjectModal();
     closeProjectModal();

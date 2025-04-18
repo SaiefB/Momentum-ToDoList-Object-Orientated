@@ -2,7 +2,7 @@
 // Handles DOM manipulation
 
 import {Task} from "./task";
-import {addTaskToProject} from "./taskController";
+import {addTaskToProject, deleteTaskFromProject} from "./taskController";
 import {myProjects} from "./project";
 import {addProjectToArray, deleteProjectFromArray} from "./projectController";
 import {updateProjectDropdown, displayProjectAside, displayProjectTitle, displayProjectTasks} from "./render";
@@ -80,8 +80,8 @@ function submitTaskForm() {
         if (validateTaskForm(taskTitle, taskDescription, dueDate, priority, project)) {
             addTaskToProject(taskTitle, taskDescription, dueDate, priority, project);
             clearTaskForm();
-            /* displayProjectTitle */
-            /* displayProjectTasks */
+            /* displayProjectTitle(project);
+            displayProjectTasks(); */
         };
     };
 };
@@ -110,6 +110,23 @@ function clearTaskForm() {
     console.log("task form cleared");
 };
 
+// ---------------------------- Content Section ------------------------------
+
+// Collect Content DOM section
+const contentTaskContainer = document.querySelector(".taskItemContainer");
+
+// function to handle delete task click
+function deleteTaskHandler() {
+    contentTaskContainer.addEventListener("click", (event) => {
+        console.log("-----deleteTaskHandler function called-----");
+        // check if the delete icon is clicked
+        if (event.target.classList.contains("fa-trash")) {
+            console.log("delete icon clicked");
+            deleteTaskFromProject(event);
+        }
+    });
+
+}
 
 
 // ---------------------------- Project Modal Section ------------------------------
@@ -207,6 +224,7 @@ function projectListClickHandler() {
         const projectIndex = getProjectIndex(event);
             if (!isNaN(projectIndex)) {
                 displayProjectTitle(projectIndex);
+                console.log("!!!!!!!!!!: ", myProjects[projectIndex].tasks);
                 displayProjectTasks(myProjects[projectIndex].tasks);
             }
     });
@@ -227,4 +245,4 @@ function getProjectIndex(event) {
 
 
 
-export {openTaskModal, closeTaskModal, closeTaskModalOnCancel, submitTaskForm, openProjectModal, closeProjectModal, submitProjectForm, deleteProjectFromAside, projectListClickHandler};
+export {openTaskModal, closeTaskModal, closeTaskModalOnCancel, submitTaskForm, deleteTaskHandler, openProjectModal, closeProjectModal, submitProjectForm, deleteProjectFromAside, projectListClickHandler};

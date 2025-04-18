@@ -83,14 +83,30 @@ function displayProjectTasks(tasks) {
 
     // loop to display each task
     tasks.forEach((task, index) => {
-        const taskItem = document.createElement("div");
-        taskItem.classList.add("contentButton");
-        taskItem.textContent = `${task}`;
-        contentTaskContainer.appendChild(taskItem);
+        const taskEntry = `
+        <button class="contentButton" data-index="${index}">
+            <div class="contentButtonLeftDiv">
+                <i class="fa-regular fa-circle"></i>
+                <p>${task.taskTitle}</p>
+                <p>${task.taskDescription}</p>
+                <p>${task.priority}</p>
+            </div>
+            <div class="contentButtonRightDiv">
+                <p>${task.dueDate}</p>
+                <p class="delete">
+                    <i class="fa-solid fa-trash" data-index="${index}"></i>
+                </p>
+            </div>
+        </button>
+        `;
+        contentTaskContainer.innerHTML += taskEntry;
+        console.log("taskEntry added to taskItemContainer");
     });
 
     console.log("Project tasks displayed");
 };
+
+
 
 
 export {updateProjectDropdown, displayProjectAside, displayProjectTitle, displayProjectTasks};
