@@ -4,7 +4,7 @@
 import {Task} from "./task";
 import {myProjects} from "./project";
 import {addProjectToArray, deleteProjectFromArray} from "./projectController";
-import {displayProjectAside, displayProjectTitle, displayProjectTasks} from "./render";
+import {updateProjectDropdown, displayProjectAside, displayProjectTitle, displayProjectTasks} from "./render";
 
 // ---------------------------- Task Modal Section ------------------------------
 // Collect Task DOM section
@@ -54,6 +54,9 @@ function closeTaskModalOnCancel() {
         console.log("modal and overlay hidden");
     };
 };
+
+// Function to handle project Selection:
+
 
 // Function to handle task submission button click
 function submitTaskForm() {
@@ -151,6 +154,7 @@ function submitProjectForm() {
             addProjectToArray(project);
             clearProjectForm();
             displayProjectAside();
+            updateProjectDropdown();
         };
     };
 };

@@ -3,6 +3,30 @@
 
 import { myProjects } from "./project";
 
+// ---------------------------- Task Modal Section ------------------------------
+
+// Collect Task Modal DOM Variables
+const projectSelectDropdown = document.querySelector("#projectDropDown");
+
+// Function update project dropdown
+function updateProjectDropdown() {
+    console.log("-----updateProjectDropdown function called-----");
+
+    //clear previous options
+    projectSelectDropdown.innerHTML = '<option value="">-- Select a project --</option>';
+
+    myProjects.forEach((project, projectIndex) => {
+        const option = document.createElement("option");
+        option.value = projectIndex;
+        option.textContent = project.projectTitle;
+        projectSelectDropdown.appendChild(option);
+        console.log("project option added to dropdown");
+    });
+};
+
+
+
+
 
 // Collect Project DOM section
 const projectList = document.querySelector(".projectList");
@@ -69,6 +93,7 @@ function displayProjectTasks(tasks) {
     });
 
     console.log("Project tasks displayed");
-}
+};
 
-export {displayProjectAside, displayProjectTitle, displayProjectTasks};
+
+export {updateProjectDropdown, displayProjectAside, displayProjectTitle, displayProjectTasks};
