@@ -15,17 +15,14 @@ function updateProjectDropdown() {
     //clear previous options
     projectSelectDropdown.innerHTML = '<option value="">-- Select a project --</option>';
 
-    myProjects.forEach((project, projectIndex) => {
+    myProjects.forEach((project) => {
         const option = document.createElement("option");
-        option.value = projectIndex;
+        option.value = project.projectTitle;
         option.textContent = project.projectTitle;
         projectSelectDropdown.appendChild(option);
-        console.log("project option added to dropdown");
+        console.log("project option added to dropdown: ", project.projectTitle);
     });
 };
-
-
-
 
 
 // Collect Project DOM section

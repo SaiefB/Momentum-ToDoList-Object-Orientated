@@ -2,6 +2,7 @@
 // Handles DOM manipulation
 
 import {Task} from "./task";
+import {addTaskToProject} from "./taskController";
 import {myProjects} from "./project";
 import {addProjectToArray, deleteProjectFromArray} from "./projectController";
 import {updateProjectDropdown, displayProjectAside, displayProjectTitle, displayProjectTasks} from "./render";
@@ -60,22 +61,24 @@ function closeTaskModalOnCancel() {
 
 // Function to handle task submission button click
 function submitTaskForm() {
-    submitBtn.onclick - function (event) {
+    submitBtn.onclick = function (event) {
         console.log("-----submitTaskForm function called-----");
         console.log("submitBtn clicked");
+        
         modal.style.display = "none";
         overlay.style.display = "none";
         console.log("modal and overlay hidden");
-        event.preventDefault();
+        
         const taskTitle = taskInput.value;
         const taskDescription = descriptionInput.value;
         const dueDate = dateInput.value;
         const priority = priorityInput.value;
         const project = projectInput.value;
         console.log("Project selected: ", project);
+        event.preventDefault();
 
         if (validateTaskForm(taskTitle, taskDescription, dueDate, priority, project)) {
-            /* addTaskToProject(project, taskTitle, taskDescription, dueDate, priority); */
+            addTaskToProject(taskTitle, taskDescription, dueDate, priority, project);
             clearTaskForm();
             /* displayProjectTitle */
             /* displayProjectTasks */
