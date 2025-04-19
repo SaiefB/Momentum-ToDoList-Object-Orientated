@@ -4,6 +4,7 @@
 
 import { myProjects } from "./project";
 import { Task } from "./task";
+import { currentProjectIndex } from "./DOM";
 
 // add task to project
 function addTaskToProject(task, description, dueDate, priority, selectedProjectTitle) {
@@ -27,16 +28,18 @@ function addTaskToProject(task, description, dueDate, priority, selectedProjectT
     });
 };
 
-
-// TODO: figure this out
 // function to delete task from project
 function deleteTaskFromProject(event) {
     console.log("-----deleteTaskFromProject function called-----");
-    // get project of the task the user clicked on
-    const getProjectIndex = event.target.closest(".contentButton").dataset.index;
+    // get task of the task the user clicked on
+    const getTaskIndex = event.target.closest(".contentButton").dataset.index;
+    console.log("getProjectIndex: ", getTaskIndex);
+    //get project that the user clicked on
+    const getProjectIndex = currentProjectIndex;
     console.log("getProjectIndex: ", getProjectIndex);
-    //get task that the user clicked on
     // remove task from project
+    myProjects[getProjectIndex].tasks.splice(getTaskIndex, 1);
+    console.log("Task deleted from project: ", myProjects[getProjectIndex]);
 };
 
 

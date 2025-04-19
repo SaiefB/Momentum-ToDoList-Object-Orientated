@@ -203,6 +203,9 @@ function clearProjectForm() {
 
 // ---------------------------- Project Aside Section ------------------------------
 
+// function to hold currentProjectIndex
+let currentProjectIndex = 0;
+
 // Function to delete project from Aside
 function deleteProjectFromAside() {
     projectList.addEventListener("click", (event) => {
@@ -238,6 +241,7 @@ function getProjectIndex(event) {
 
     const projectIndex = parseInt(projectBtn.getAttribute("data-index"), 10);
     console.log("projectIndex: ", projectIndex);
+    currentProjectIndex = projectIndex;
     return projectIndex;
 };
 
@@ -245,4 +249,4 @@ function getProjectIndex(event) {
 
 
 
-export {openTaskModal, closeTaskModal, closeTaskModalOnCancel, submitTaskForm, deleteTaskHandler, openProjectModal, closeProjectModal, submitProjectForm, deleteProjectFromAside, projectListClickHandler};
+export {openTaskModal, closeTaskModal, closeTaskModalOnCancel, submitTaskForm, deleteTaskHandler, openProjectModal, closeProjectModal, submitProjectForm, deleteProjectFromAside, currentProjectIndex, projectListClickHandler};
