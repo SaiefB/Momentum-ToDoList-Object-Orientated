@@ -80,8 +80,15 @@ function submitTaskForm() {
         if (validateTaskForm(taskTitle, taskDescription, dueDate, priority, project)) {
             addTaskToProject(taskTitle, taskDescription, dueDate, priority, project);
             clearTaskForm();
-            /* displayProjectTitle(project);
-            displayProjectTasks(); */
+
+            // find projectIndex
+            const projectIndex = myProjects.findIndex((projectObj) => projectObj.projectTitle === project);
+            console.log("projectIndex: ", projectIndex);
+            displayProjectTitle(projectIndex);
+
+            // get project tasks
+            const projectTasks = myProjects[projectIndex].tasks;
+            displayProjectTasks(projectTasks);
         };
     };
 };
