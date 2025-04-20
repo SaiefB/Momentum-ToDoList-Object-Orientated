@@ -5,7 +5,7 @@ import {Task} from "./task";
 import {addTaskToProject, deleteTaskFromProject} from "./taskController";
 import {myProjects} from "./project";
 import {addProjectToArray, deleteProjectFromArray} from "./projectController";
-import {updateProjectDropdown, displayProjectAside, displayProjectTitle, displayProjectTasks} from "./render";
+import {updateProjectDropdown, displayProjectAside, displayProjectTitle, displayProjectTasks, updateCheckBox} from "./render";
 
 // ---------------------------- Task Modal Section ------------------------------
 // Collect Task DOM section
@@ -145,6 +145,20 @@ function deleteTaskHandler() {
 
 }
 
+// ---------------------------- Content Section - Task Section ------------------------------
+
+// Function to handle checkBox click
+function checkBoxHandler() {
+    contentTaskContainer.addEventListener("click", (event) => {
+        console.log("-----checkBoxHandler function called-----");
+        // check if the checkBox is clicked
+        if (event.target.id === "checkBox") {
+            console.log("checkBox clicked")
+            updateCheckBox(event);
+        };
+    });
+};
+
 
 // ---------------------------- Project Modal Section ------------------------------
 // Collect Project DOM section
@@ -266,4 +280,4 @@ function getProjectIndex(event) {
 
 
 
-export {openTaskModal, closeTaskModal, closeTaskModalOnCancel, submitTaskForm, deleteTaskHandler, openProjectModal, closeProjectModal, submitProjectForm, deleteProjectFromAside, currentProjectIndex, projectListClickHandler};
+export {openTaskModal, closeTaskModal, closeTaskModalOnCancel, submitTaskForm, deleteTaskHandler, checkBoxHandler, openProjectModal, closeProjectModal, submitProjectForm, deleteProjectFromAside, currentProjectIndex, projectListClickHandler};

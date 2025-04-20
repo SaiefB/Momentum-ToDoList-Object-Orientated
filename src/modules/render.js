@@ -2,6 +2,7 @@
 // Handles rendering tasks/projects to the UI
 
 import { myProjects } from "./project";
+import { checkBoxHandler, currentProjectIndex } from "./DOM";
 
 // ---------------------------- Task Modal Section ------------------------------
 
@@ -84,9 +85,9 @@ function displayProjectTasks(tasks) {
     // loop to display each task
     tasks.forEach((task, index) => {
         const taskEntry = `
-        <button class="contentButton" data-index="${index}">
+        <div class="contentButton" data-index="${index}">
             <div class="contentButtonLeftDiv">
-                <i class="fa-regular fa-circle"></i>
+                <i class="fa-regular fa-circle" id="checkBox"></i>
                 <p>${task.taskTitle}</p>
                 <p>${task.taskDescription}</p>
                 <p>${task.priority}</p>
@@ -97,7 +98,7 @@ function displayProjectTasks(tasks) {
                     <i class="fa-solid fa-trash" data-index="${index}"></i>
                 </p>
             </div>
-        </button>
+        </div>
         `;
         contentTaskContainer.innerHTML += taskEntry;
         console.log("taskEntry added to taskItemContainer");
@@ -106,7 +107,27 @@ function displayProjectTasks(tasks) {
     console.log("Project tasks displayed");
 };
 
+// ---------------------------- Content Section - Task Section ------------------------------
+
+// Function to change the checkBox icon
+function updateCheckBox(event) {
+    console.log("-----updateCheckBox function called-----");
+    // get task title
+    const taskTitle = event.target.nextElementSibling;
+    const taskBackground = event.target.closest(".contentButton");
+
+    if (event.target.classList.contains("fa-solid")) {
+        event.target.classList.replace("fa-solid", "fa-regular");
+        taskTitle.style.textDecoration = "none";
+        taskBackground.style.backgroundColor = "white";
+
+    } else if (event.target.classList.contains("fa-regular")) {
+        event.target.classList.replace("fa-regular", "fa-solid");
+        taskTitle.style.textDecoration = "line-through";
+        taskBackground.style.backgroundColor = "#9A9A9A";
+    }
+}
 
 
 
-export {updateProjectDropdown, displayProjectAside, displayProjectTitle, displayProjectTasks};
+export {updateProjectDropdown, displayProjectAside, displayProjectTitle, displayProjectTasks, updateCheckBox};
