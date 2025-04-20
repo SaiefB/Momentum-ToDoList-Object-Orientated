@@ -130,6 +130,16 @@ function deleteTaskHandler() {
         if (event.target.classList.contains("fa-trash")) {
             console.log("delete icon clicked");
             deleteTaskFromProject(event);
+
+            //find projectIndex
+            const projectIndex = myProjects.findIndex((projectObj) => projectObj.projectTitle === myProjects[currentProjectIndex].projectTitle);
+            console.log("projectIndex: ", projectIndex);
+            displayProjectTitle(projectIndex);
+
+            // get project tasks
+            const projectTasks = myProjects[projectIndex].tasks;
+            displayProjectTasks(projectTasks);
+            console.log("Task deleted from project");
         }
     });
 
