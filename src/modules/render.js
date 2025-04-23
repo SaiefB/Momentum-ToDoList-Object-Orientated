@@ -89,7 +89,7 @@ function displayProjectTasks(tasks) {
             <div class="contentButtonLeftDiv">
                 <i class="fa-regular fa-circle" id="checkBox"></i>
                 <p>${task.taskTitle}</p>
-                <p>${task.taskDescription}</p>
+                <p class="description">${task.taskDescription}</p>
                 <p>${task.priority}</p>
             </div>
             <div class="contentButtonRightDiv">
@@ -128,6 +128,16 @@ function updateCheckBox(event) {
     }
 }
 
+// function to update description text
+function updateDescText(event) {
+    console.log("-----updateDescText function called-----");
+    // get task description text of click event
+    const clickedTaskDescriptionText = event.target.closest(".contentButton").querySelector(".description").textContent;
+    console.log("clickedTaskDescriptionText: ", clickedTaskDescriptionText);
+    // 
+
+}
 
 
-export {updateProjectDropdown, displayProjectAside, displayProjectTitle, displayProjectTasks, updateCheckBox};
+
+export {updateProjectDropdown, displayProjectAside, displayProjectTitle, displayProjectTasks, updateCheckBox, updateDescText};

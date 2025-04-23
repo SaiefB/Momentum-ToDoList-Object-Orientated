@@ -5,7 +5,7 @@ import {Task} from "./task";
 import {addTaskToProject, deleteTaskFromProject} from "./taskController";
 import {myProjects} from "./project";
 import {addProjectToArray, deleteProjectFromArray} from "./projectController";
-import {updateProjectDropdown, displayProjectAside, displayProjectTitle, displayProjectTasks, updateCheckBox} from "./render";
+import {updateProjectDropdown, displayProjectAside, displayProjectTitle, displayProjectTasks, updateCheckBox, updateDescText} from "./render";
 
 // ---------------------------- Task Modal Section ------------------------------
 // Collect Task DOM section
@@ -159,6 +159,18 @@ function checkBoxHandler() {
     });
 };
 
+// Function to handle see Description click
+function seeDescHandler() {
+    contentTaskContainer.addEventListener("click", (event) => {
+        console.log("-----seeDescHandler function called-----");
+        // check if the description is clicked
+        if (event.target.classList.contains("description")) {
+            console.log("description clicked");
+            updateDescText(event);
+        }
+    })
+}
+
 
 // ---------------------------- Project Modal Section ------------------------------
 // Collect Project DOM section
@@ -280,4 +292,4 @@ function getProjectIndex(event) {
 
 
 
-export {openTaskModal, closeTaskModal, closeTaskModalOnCancel, submitTaskForm, deleteTaskHandler, checkBoxHandler, openProjectModal, closeProjectModal, submitProjectForm, deleteProjectFromAside, currentProjectIndex, projectListClickHandler};
+export {openTaskModal, closeTaskModal, closeTaskModalOnCancel, submitTaskForm, deleteTaskHandler, checkBoxHandler, seeDescHandler, openProjectModal, closeProjectModal, submitProjectForm, deleteProjectFromAside, currentProjectIndex, projectListClickHandler};
