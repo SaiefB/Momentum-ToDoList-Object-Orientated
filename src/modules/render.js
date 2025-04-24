@@ -130,11 +130,13 @@ function updateCheckBox(event) {
 
 // function to update description text
 function updateDescText(event) {
-    console.log("-----updateDescText function called-----");
+    console.log("-----updateDescText function called-----"); 
     // get task description text of click event
     const clickedTaskDescriptionText = event.target.closest(".contentButton").querySelector(".description").textContent;
     console.log("clickedTaskDescriptionText: ", clickedTaskDescriptionText);
-    // 
+    // get project.taskDescription
+    const actualTaskDescriptionText = myProjects[currentProjectIndex].tasks[clickedTaskDescriptionText].taskDescription;
+    console.log("actualTaskDescriptionText: ", actualTaskDescriptionText); // i dont actually kno wwhats happenig here please fix.
 
 }
 
